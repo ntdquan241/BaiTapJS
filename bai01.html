@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="mass" placeholder="Enter mass in kg">
+    <input type="text" id="height" placeholder="Enter height in m">
+    <button id="cal">Click</button>
+         <script>
+            document.getElementById("cal").onclick = function(){
+                var mass = document.getElementById("mass").value;
+                var height = document.getElementById("height").value;
+                var bmi = mass / (height * height);
+                console.log("BMI is: " + bmi);                                                                                                                                                  
+            }
+         </script>                                                                                                                     
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
