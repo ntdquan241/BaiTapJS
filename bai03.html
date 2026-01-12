@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Enter Dolphin Scores:
+    <input type="text" id="score1" placeholder="Enter score 1">
+    <input type="text" id="score2" placeholder="Enter score 2">
+    <input type="text" id="score3" placeholder="Enter score 3">
+    <br>
+    Enter Koala Scores:
+    <input type="text" id="score4" placeholder="Enter score 4">
+    <input type="text" id="score5" placeholder="Enter score 5">
+    <input type="text" id="score6" placeholder="Enter score 6">
+    <button id="cal">Calculate</button>
+    <script>
+        button = document.getElementById("cal");
+        button.onclick = function() {
+            var score1 = parseFloat(document.getElementById("score1").value);
+            var score2 = parseFloat(document.getElementById("score2").value);
+            var score3 = parseFloat(document.getElementById("score3").value);
+            var score4 = parseFloat(document.getElementById("score4").value);
+            var score5 = parseFloat(document.getElementById("score5").value);
+            var score6 = parseFloat(document.getElementById("score6").value);
+            var avgDolphin = (score1 + score2 + score3) / 3;
+            var avgKoala = (score4 + score5 + score6) / 3;
+            console.log("Dolphin Average Score: " + avgDolphin);
+            console.log("Koala Average Score: " + avgKoala);
+            if (avgDolphin >= 100 || avgKoala >= 100) {
+                if (avgDolphin > avgKoala) {
+                    console.log("Dolphins win the trophy!");
+                } else if (avgKoala > avgDolphin) {
+                    console.log("Koalas win the trophy!");
+                } else {
+                    console.log("It's a draw!");
+                }
+            } else {
+                console.log("No team wins the trophy as neither team reached the minimum score of 100.");
+            }
+        }
+    </script>
+</body>
+</html>
