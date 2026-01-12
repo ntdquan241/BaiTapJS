@@ -6,6 +6,26 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id="">
+    <input type="text" id="bill" placeholder="Enter bill amount">
+    <button id="cal">Calculate Tip</button>
+    <script>
+        button = document.getElementById
+("cal");
+        button.onclick = function(){
+            var tip = 0;
+            var finalbill = 0;
+            var bill = parseFloat(document.getElementById("bill").value);
+            if (bill > 50 && bill <= 300){
+              tip = bill * 0.15;  
+              finalbill = bill + tip;
+            }else {
+                tip = bill * 0.20;
+                finalbill = bill + tip;
+            }
+            console.log("Bill: " + bill);
+            console.log("Tip: " + tip);
+            console.log("Final Bill: " + finalbill);
+        }
+    </script>
 </body>
 </html>
