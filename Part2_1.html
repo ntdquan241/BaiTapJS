@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h3>Dolphins</h3>
+        <input type="text" id="dolphin1" placeholder="score 1">
+        <input type="text" id="dolphin2" placeholder="score 2">
+        <input type="text" id ="dolphin3" placeholder="score 3">
+
+    </div>
+    <div><h3>
+        Koalas
+    </h3>
+    <input type="text" id="koala1" placeholder="score 1">
+    <input type="text" id="koala2" placeholder="score 2">
+    <input type="text" id="koala3" placeholder="score 3">
+
+
+    </div>
+    <button id="cal">
+        Calculator
+    </button>
+    <script>
+
+        //cau 2
+        button = document.getElementById("cal");
+        button.onclick = () => {
+            const dol1 = parseFloat(document.getElementById("dolphin1").value);
+            const dol2 = parseFloat(document.getElementById("dolphin2").value);
+            const dol3 = parseFloat(document.getElementById("dolphin3").value);
+            const koa1 = parseFloat(document.getElementById("koala1").value); 
+            const koa2 = parseFloat(document.getElementById("koala2").value);
+            const koa3 = parseFloat(document.getElementById("koala3").value);
+
+            const avgdol = (dol1 + dol2 + dol3) / 3;
+            const avgkoa = (koa1  + koa2 + koa3) / 3;
+            console.log("Dol avg: " + avgdol);
+            console.log("Koa avg: " + avgkoa);
+
+
+            checkWinner(avgdol, avgkoa);
+         }
+
+         const checkWinner = (avgdol, avgkoa) =>{
+            if (avgdol >= 2 * avgkoa){
+                console.log("Dolphin win (" + avgdol + " vs " + avgkoa + ")");
+            }
+            else if (avgkoa >= 2 * avgdol){
+                console.log("Koala win (" + avgkoa + " vs " + avgdol + ")");
+            } else {
+                console.log("No team wins...");
+            }
+         }
+        
+    </script>
+</body>
+</html>
