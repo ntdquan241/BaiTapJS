@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CamelCase Converter</title>
+</head>
+<body>
+  <textarea rows="10" cols="30" placeholder="Paste your variables here..."></textarea>
+  <button>Convert</button>
+
+  <script>
+    // 1. Chọn các phần tử DOM
+    const textArea = document.querySelector('textarea');
+    const button = document.querySelector('button');
+
+    // 2. Lắng nghe sự kiện click
+    button.addEventListener('click', function () {
+      
+      // Lấy giá trị từ textarea
+      const text = textArea.value;
+
+      // 3. Tách chuỗi thành mảng các dòng (dựa vào ký tự xuống dòng \n)
+      const rows = text.split('\n');
+
+      // 4. Duyệt qua từng dòng để xử lý
+      // Dùng entries() để lấy được cả index (i) phục vụ cho việc in dấu ✅
+      for (const [i, row] of rows.entries()) {
+        
+        // Bước A: Chuẩn hóa dữ liệu
+        // - .toLowerCase(): Đưa hết về chữ thường (xử lý vụ calculate_AGE -> age)
+        // - .trim(): Xóa khoảng trắng thừa ở đầu/cuối
+        // - .split('_'): Tách thành 2 từ dựa vào dấu gạch dưới
+        const [first, second] = row.toLowerCase().trim().split('_');
+
+        // (Optional) Kiểm tra nếu dòng trống thì bỏ qua
+        if (!first || !second) continue;
+
+        // Bước B: Chuyển đổi sang camelCase
+        // Từ thứ 2: Viết hoa chữ cái đầu + ghép với phần còn lại
+        const output = `${first}${second.replace(
+          second[0],
+          second[0].toUpperCase()
+        )}`;
+
+        // Bước C: Trang trí kết quả
+        // - .padEnd(20): Thêm khoảng trắng vào cuối chuỗi sao cho đủ 20 ký tự (để thẳng hàng)
+        // - .repeat(i + 1): Lặp lại dấu tick dựa theo số thứ tự dòng
+        const finalOutput = `${output.padEnd(20)}${'✅'.repeat(i + 1)}`;
+
+        console.log(finalOutput);
+      }
+    });
+  </script>
+</body>
+</html>

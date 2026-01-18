@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    // --- DỮ LIỆU ĐỀ BÀI (Giữ nguyên từ bài trước) ---
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [/* ...bỏ qua cho gọn... */],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+// --- BẮT ĐẦU GIẢI ---
+
+// 1. In danh sách bàn thắng (Looping Arrays: The for-of Loop)
+// Để lấy cả chỉ số (index) và giá trị, ta dùng phương thức .entries()
+console.log('--- Task 1: Goal Scored ---');
+
+for (const [i, player] of game.scored.entries()) {
+  // i bắt đầu từ 0 nên phải + 1 để thành Goal 1, Goal 2...
+  console.log(`Goal ${i + 1}: ${player}`);
+}
+
+
+// 2. Tính tỉ lệ cược trung bình (Looping Objects: Object.values)
+// Ta chỉ cần quan tâm đến các con số (values) trong object odds
+console.log('--- Task 2: Average Odd ---');
+
+const odds = Object.values(game.odds); // Lấy ra mảng [1.33, 3.25, 6.5]
+let average = 0;
+
+for (const odd of odds) {
+  average += odd;
+}
+average /= odds.length; // Chia cho tổng số phần tử (3)
+console.log(`Average odd: ${average.toFixed(2)}`); // (Tuỳ chọn: làm tròn 2 số)
+
+
+// 3. In tỉ lệ cược theo định dạng (Looping Objects: Object.entries)
+// Lần này ta cần cả KEY (team1, x, team2) và VALUE (1.33...)
+console.log('--- Task 3: Print Odds ---');
+
+for (const [team, odd] of Object.entries(game.odds)) {
+  // Logic: Nếu team là 'x' thì in 'draw', ngược lại in 'victory ' + tên đội
+  // Lưu ý: game[team] chính là game['team1'] hoặc game['team2'] -> Lấy được tên đội
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  
+  console.log(`Odd of ${teamStr}: ${odd}`);
+}
+
+
+// 4. Bonus: Tạo object đếm số bàn thắng (Scorers)
+console.log('--- Task 4: Scorers Object ---');
+
+const scorers = {};
+
+for (const player of game.scored) {
+  // Toán tử 3 ngôi: Nếu player đã có trong object ? tăng lên 1 : gán bằng 1
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+  
+  // Hoặc cách viết tường minh hơn:
+  // if (scorers[player]) {
+  //   scorers[player]++;
+  // } else {
+  //   scorers[player] = 1;
+  // }
+}
+
+console.log(scorers);
+// Kết quả mong đợi: { Lewandowski: 2, Gnarby: 1, Hummels: 1 }
+   </script> 
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // --- DỮ LIỆU ĐẦU VÀO (Data) ---
+const gameEvents = new Map([
+  [17, '⚽ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽ GOAL'],
+  [80, '⚽ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+// --- BẮT ĐẦU GIẢI ---
+
+// 1. Tạo mảng các sự kiện không trùng lặp (Sets)
+// Logic: Lấy hết values của map -> Bỏ vào Set để lọc trùng -> Rải (...) lại thành Array
+const events = [...new Set(gameEvents.values())];
+console.log('--- Task 1: Unique Events ---');
+console.log(events);
+
+
+// 2. Xóa sự kiện thẻ vàng phút 64 (Map Methods)
+// Sử dụng phương thức .delete(key)
+gameEvents.delete(64);
+console.log('--- Task 2: Deleted minute 64 ---');
+console.log(gameEvents); // Kiểm tra lại xem mất phút 64 chưa
+
+
+// 3. Tính trung bình thời gian xảy ra sự kiện
+// Logic: Tổng thời gian (90 phút) chia cho số lượng sự kiện (gameEvents.size)
+console.log('--- Task 3: Average ---');
+const time = 90;
+console.log(
+  `An event happened, on average, every ${time / gameEvents.size} minutes`
+);
+
+
+// 4. Duyệt và in ra màn hình theo Hiệp (Looping Maps)
+console.log('--- Task 4: Log with Half ---');
+
+for (const [min, event] of gameEvents) {
+  // Logic: Nếu phút <= 45 là Hiệp 1, còn lại là Hiệp 2
+  const half = min <= 45 ? 'FIRST' : 'SECOND';
+  
+  console.log(`[${half} HALF] ${min}: ${event}`);
+}
+
+    </script>
+</body>
+</html>
