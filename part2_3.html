@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const markname = "Mark Miller";
+        const markweight = 78;
+        const markheight = 1.69;
+        const johnname = "John Smith";
+        const johnweight = 92;
+        const johnheight = 1.95;
+
+        const calcBMI = (weight, height) => {
+            return weight / (height * height);
+        }
+
+            if (calcBMI(markweight,markheight) > calcBMI(johnweight,johnheight)){
+                console.log(markname + " BMI" + calcBMI(markweight,markheight) + " is higher than " + johnname + "'s!");
+            } else {
+                console.log(johnname + " BMI" + calcBMI(johnweight,johnheight) + " is higher than " + markname + "'s!");
+            }
+
+    </script>
+</body>
+</html>

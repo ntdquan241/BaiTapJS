@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // --- DỮ LIỆU ĐẦU VÀO (DATA) ---
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+// --- BẮT ĐẦU GIẢI ---
+
+// 1. Tạo mảng cầu thủ cho mỗi đội (Destructuring Arrays)
+// Lấy 2 mảng con từ trong mảng lớn game.players
+const [players1, players2] = game.players;
+console.log('--- Task 1 ---');
+console.log(players1, players2);
+
+
+// 2. Tách thủ môn và cầu thủ sân của Bayern (Rest Syntax)
+// Phần tử đầu tiên là thủ môn (gk), tất cả phần còn lại (...) gom vào mảng fieldPlayers
+const [gk, ...fieldPlayers] = players1;
+console.log('--- Task 2 ---');
+console.log('Thủ môn:', gk);
+console.log('Cầu thủ sân:', fieldPlayers);
+
+
+// 3. Tạo mảng tất cả cầu thủ (Spread Operator)
+// Rải (...) cầu thủ đội 1 và đội 2 vào chung một mảng mới
+const allPlayers = [...players1, ...players2];
+console.log('--- Task 3 ---');
+console.log(allPlayers);
+
+
+// 4. Thêm cầu thủ thay thế (Spread Operator)
+// Rải cầu thủ đội 1 vào mảng mới, sau đó thêm 3 người mới vào đuôi
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+console.log('--- Task 4 ---');
+console.log(players1Final);
+
+
+// 5. Tạo biến tỉ lệ cược (Destructuring Objects)
+// Lấy key 'team1', đổi tên key 'x' thành 'draw', lấy key 'team2'
+const { team1, x: draw, team2 } = game.odds;
+console.log('--- Task 5 ---');
+console.log(team1, draw, team2);
+
+
+// 6. Hàm in bàn thắng (Rest Parameters)
+// Thu thập tất cả tham số truyền vào thành 1 mảng tên là 'players'
+const printGoals = function (...players) {
+  console.log(`${players.length} goals were scored`);
+  console.log('Scored by:', players);
+};
+
+console.log('--- Task 6 ---');
+// Test data thủ công
+printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich'); 
+// Test data từ game object (Dùng Spread để rải mảng scored thành các đối số rời rạc)
+printGoals(...game.scored);
+
+
+// 7. In đội thắng (Short-circuiting &&)
+// Logic: Tỉ lệ (odd) càng thấp thì khả năng thắng càng cao.
+// Toán tử &&: Nếu vế trái TRUE thì nó mới chạy vế phải.
+console.log('--- Task 7 ---');
+
+// Nếu team1 < team2 (đúng) -> In dòng chữ
+team1 < team2 && console.log('Team 1 is more likely to win');
+
+// Nếu team2 < team1 (đúng) -> In dòng chữ
+team1 > team2 && console.log('Team 2 is more likely to win');
+    </script>
+</body>
+</html>

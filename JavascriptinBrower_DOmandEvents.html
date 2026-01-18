@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. Chọn nút 'again' và lắng nghe sự kiện click
+document.querySelector('.again').addEventListener('click', function () {
+  
+  // 2. Reset các biến dữ liệu (Logic game)
+  score = 20; // Đưa điểm về 20
+  secretNumber = Math.trunc(Math.random() * 20) + 1; // Tạo số bí mật MỚI
+
+  // 3. Reset giao diện hiển thị (Text & Input)
+  document.querySelector('.message').textContent = 'Start guessing...'; // Dòng thông báo
+  document.querySelector('.score').textContent = score; // Hiển thị lại điểm 20
+  document.querySelector('.number').textContent = '?'; // Ẩn số bí mật đi
+  document.querySelector('.guess').value = ''; // Xóa trắng ô nhập liệu của người dùng
+
+  // 4. Reset màu sắc và kích thước (CSS Styles)
+  document.querySelector('body').style.backgroundColor = '#222'; // Trả về màu nền đen xám
+  document.querySelector('.number').style.width = '15rem'; // Trả về kích thước ô vuông nhỏ
+});
+    </script>
+</body>
+</html>
